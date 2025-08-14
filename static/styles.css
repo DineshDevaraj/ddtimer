@@ -1,0 +1,79 @@
+
+/* Existing modal styles */
+.inplace-editor {
+    position: fixed; /* fixed on screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center on screen */
+    background: #fff;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.15);
+    z-index: 1050;
+    flex-direction: column; /* stack vertically */
+    gap: 1rem;
+    min-width: 300px;
+}
+
+.inplace-editor-controls {
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hide-caret {
+    caret-color: transparent;
+    user-select: none;
+}
+
+.popover {
+  max-width: 500px; /* or any desired width */
+  width: auto; /* optional to avoid forced width */
+}
+
+.dotted-underline {
+  text-decoration-style: dotted;
+  text-underline-position: under; /* optional: puts underline under the text */
+  text-decoration-line: underline;
+}
+
+.timer-pallet {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.progress {
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  height: 10px;
+}
+
+.fs-7 {
+    font-size: 0.75rem;
+}
+
+.fs-8 {
+    font-size: 0.70rem;
+}
+
+.timer-card .header {
+  border-radius: 6px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.timer-card .header button {
+  border-radius: 0px;
+}
+
+.timer-card .header .first-button {
+  border-top-left-radius: 6px;
+}
+
+.timer-card .header .last-button {
+  border-top-right-radius: 6px;
+}
+
+.wide-popover {
+  width: 800px !important; /* Set a fixed width for the popover */
+}
