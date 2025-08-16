@@ -3,7 +3,7 @@ let remainingTime = 15;
 let intervalObject = null;
 let timerRunningStatus = false;
 
-function updateCurrentTime() {
+function runCurrentTime() {
     const now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
@@ -13,8 +13,8 @@ function updateCurrentTime() {
     document.getElementById('current-time').textContent =
         `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
 }
-setInterval(updateCurrentTime, 1000);
-updateCurrentTime();
+setInterval(runCurrentTime, 1000);
+runCurrentTime();
 
 function forEachSecond() {
     remainingTime--;
@@ -34,6 +34,7 @@ function runCountdown(event) {
         console.log("Timer is already running.");
         return;
     }
+    event.target.closest('.countdown-container').querySelector('.countdown-display');
     intervalObject = setInterval(forEachSecond, 1000);
     timerRunningStatus = true;
     forEachSecond();
