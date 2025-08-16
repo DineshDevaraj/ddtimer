@@ -2,16 +2,17 @@
  * Event Handler Definitions
  */
 
-number_of_timers = 1;
-
 function addNewTimer(event) {
-    number_of_timers += 1;
+
+    const timer = new TimerPallet();
 
     const firstTimer = document.getElementById('timer-1');
     const newTimerDiv = firstTimer.cloneNode(true);
 
-    newTimerDiv.querySelector('.sc-num').textContent = number_of_timers;
-    newTimerDiv.id = 'timer-' + number_of_timers;
+    newTimerDiv.querySelector('.sc-num').textContent = timer.number;
+    newTimerDiv.onclick = timer.runThisTimer.bind(timer);
+    newTimerDiv.id = 'timer-' + timer.number;
+
     attachTimerDescriptionEditor(newTimerDiv);
     attachTimerDurationEditor(newTimerDiv);
     attachStartTimeEditor(newTimerDiv);
