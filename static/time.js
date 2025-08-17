@@ -12,11 +12,7 @@ class Time {
         this.meridian = meridian;
     }
 
-    toString() {
-        return `${this.hour}:${this.minute} ${this.meridian}`;
-    }
-
-    pastCurrentTime() {
+    toDate() {
         const now = new Date();
         const startTime = new Date(
             now.getFullYear(),
@@ -27,9 +23,26 @@ class Time {
             0,
             0
         );
-        if(startTime < now) {
-            return false;
-        }
-        return true;
+        return startTime;
+    }
+
+    toString() {
+        return `${this.hour}:${this.minute} ${this.meridian}`;
+    }
+
+    aheadOfCurrentTime() {
+        return this.toDate() > new Date()
+    }
+
+    lagsBehindCurrentTime() {
+        return this.toDate() < new Date()
+    }
+
+    timeLeft() {
+        const diff = Math.abs(this.toDate() - new Date());
+        const hour = Math.floor(diff / 1000 / 60 / 60);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const meridian = hour >= 12 ? 'PM' : 'AM';
+        return new Time(hour % 12, minutes, meridian);
     }
 }

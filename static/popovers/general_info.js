@@ -13,8 +13,17 @@ function attachGeneralInfoPopover(parent) {
     });
 
     timerStartButton.addEventListener('shown.bs.popover', () => {
-        const popoverElement = document.querySelector('.popover');
-        popoverElement.querySelector('p').textContent = "Are you sure you want to start this timer?";
+        const popoverDom = document.querySelector('.popover');
+        const timerPallet = TimerPallet.getByTimerId(popoverDom.classList[1]);
+        const timeLeft = timerPallet.startTime.timeLeft();
+        let content = "";
+        if (timerPallet.startTime.aheadOfCurrentTime()) {
+            content += `Still time left is ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+        } else {
+            content += `Already past by ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+        }
+        content += `Are you sure you want to start this timer?`;
+        popoverDom.querySelector('p').textContent = content;
     });
 
     document.addEventListener('click', function (e) {
@@ -42,7 +51,7 @@ function generalInfoCancel(event) {
 
 function closePopover(event) {
     const popoverDom = event.target.closest('.popover');
-    const timerPallet = document.getElementById(popoverDom.classList[1]);
-    const startButton = timerPallet.querySelector('[name=Start]');
+    const timerPalletDom = document.getElementById(popoverDom.classList[1]);
+    const startButton = timerPalletDom.querySelector('[name=Start]');
     bootstrap.Popover.getInstance(startButton).hide();
 }
