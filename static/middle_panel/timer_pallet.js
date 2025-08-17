@@ -22,18 +22,18 @@ class TimerPallet {
     }
 
     get durationInSeconds() {
-        const dom = this.#dom.querySelector('[name=duration]');
+        const dom = this.#dom.querySelector('[name=timer-duration]');
         const [minutes, seconds] = dom.textContent.split(':');
         return parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
     }
 
     get title() {
-        const dom = this.#dom.querySelector('[name=description]');
+        const dom = this.#dom.querySelector('[name=timer-description]');
         return dom.querySelector('[name=title]').textContent.trim();
     }
 
     get description() {
-        const dom = this.#dom.querySelector('[name=description]');
+        const dom = this.#dom.querySelector('[name=timer-description]');
         const title = dom.querySelector('[name=title]').textContent.trim();
         const speaker = dom.querySelector('[name=speaker]').textContent.trim();
         const note = dom.querySelector('[name=note]').textContent.trim();
@@ -46,8 +46,7 @@ class TimerPallet {
             console.log("Time has not yet arrived.");
             return;
         }
-        const timerCard = new TimerCard();
-        timerCard.inject(this);
-        timerCard.start();
+        TimerCard.inject(this);
+        TimerCard.start();
     }
 }
