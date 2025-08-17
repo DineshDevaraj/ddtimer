@@ -1,14 +1,14 @@
 <div id="timer-duration-editor" class="d-none inplace-editor">
     <div class="d-flex inplace-editor-controls">
-        <input type="number" class="form-control hide-caret" style="width:70px;" min="0" max="12" 
+        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:50px; font-size: 0.95em;" min="0" max="12" 
             value="00" name="hour" onkeydown="return false" />
-        <input type="number" class="form-control hide-caret" style="width:70px;" min="0" max="59"
+        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:50px; font-size: 0.95em;" min="0" max="59"
             value="15" name="minute" />
-        <button type="button" class="btn btn-light border-secondary" name="Ok" 
+        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Ok" 
             onclick="return setTimerDuration(event)">
                 <i class="bi bi-check-lg"></i>
         </button>
-        <button type="button" class="btn btn-light border-secondary" name="Cancel"
+        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Cancel"
             onclick="return cancelTimerDurationEditor(event)">
                 <i class="bi bi-x-lg"></i>
         </button>

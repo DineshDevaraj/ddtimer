@@ -2,21 +2,21 @@
 <div id="start-time-editor" class="d-none inplace-editor">
     <div class="d-flex inplace-editor-controls">
         <!-- Hour Spinner -->
-        <input type="number" class="form-control hide-caret" style="width:70px;" min="1" max="12" 
+        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:45px; font-size: 0.95em;" min="1" max="12" 
             value="10" name="Hour" onkeydown="return false" />
         <!-- Minute Spinner -->
-        <input type="number" class="form-control hide-caret" style="width:70px;" min="0" max="59"
+        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:45px; font-size: 0.95em;" min="0" max="59"
             value="10" name="Minute" />
         <!-- AM/PM Dropdown -->
-        <select class="form-select" style="width:80px;" name="AM-PM">
+        <select class="form-select mt-0 py-1 px-1" style="width:70px; font-size: 0.95em;" name="AM-PM">
             <option value="AM">AM</option>
             <option value="PM">PM</option>
         </select>
-        <button type="button" class="btn btn-light border-secondary" name="Ok" 
+        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Ok" 
             onclick="return setStartTime(event)">
                 <i class="bi bi-check-lg"></i>
         </button>
-        <button type="button" class="btn btn-light border-secondary" name="Cancel"
+        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Cancel"
             onclick="return cancelStartTimeEditor(event)">
                 <i class="bi bi-x-lg"></i>
         </button>
