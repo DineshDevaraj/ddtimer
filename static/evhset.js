@@ -1,15 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    const timer = new TimerPallet();
-    const timerDiv = document.getElementById("timer-1");
-    timerDiv.querySelector("[name=Start]").onclick = timer.runThisTimer.bind(timer);
+    const timer =  TimerPallet.getByTimerId("timer-1");
+    timer.dom.querySelector("[name=Start]").onclick = timer.runThisTimer.bind(timer);
 
-    attachGeneralInfoPopover(timerDiv);
-    attachTimerDescriptionEditor(timerDiv);
-    attachTimerDurationEditor(timerDiv);
-    attachStartTimeEditor(timerDiv);
-    
+    attachGeneralInfoPopover(timer.dom);
+    attachTimerDescriptionEditor(timer.dom);
+    attachTimerDurationEditor(timer.dom);
+    attachStartTimeEditor(timer.dom);
+
     const addNewTimerButton = document.getElementById('add-new-timer');
     addNewTimerButton.addEventListener('click', addNewTimer);
 });

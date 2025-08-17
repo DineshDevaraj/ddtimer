@@ -4,20 +4,16 @@
 
 function addNewTimer(event) {
 
-    const timer = new TimerPallet();
+    const timer = TimerPallet.clone();
 
-    const firstTimer = document.getElementById('timer-1');
-    const newTimerDiv = firstTimer.cloneNode(true);
+    timer.dom.querySelector('.sc-num').textContent = timer.number;
+    timer.dom.querySelector("[name=Start]").onclick = timer.runThisTimer.bind(timer);
 
-    newTimerDiv.querySelector('.sc-num').textContent = timer.number;
-    newTimerDiv.querySelector("[name=Start]").onclick = timer.runThisTimer.bind(timer);
-    newTimerDiv.id = 'timer-' + timer.number;
-
-    attachGeneralInfoPopover(newTimerDiv);
-    attachTimerDescriptionEditor(newTimerDiv);
-    attachTimerDurationEditor(newTimerDiv);
-    attachStartTimeEditor(newTimerDiv);
+    attachGeneralInfoPopover(timer.dom);
+    attachTimerDescriptionEditor(timer.dom);
+    attachTimerDurationEditor(timer.dom);
+    attachStartTimeEditor(timer.dom);
 
     const middlePanel = document.querySelector('.middle-panel .row');
-    middlePanel.appendChild(newTimerDiv);
+    middlePanel.appendChild(timer.dom);
 }
