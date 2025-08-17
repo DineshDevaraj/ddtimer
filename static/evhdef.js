@@ -10,7 +10,7 @@ function addNewTimer(event) {
     const newTimerDiv = firstTimer.cloneNode(true);
 
     newTimerDiv.querySelector('.sc-num').textContent = timer.number;
-    newTimerDiv.onclick = timer.runThisTimer.bind(timer);
+    newTimerDiv.querySelector("[name=Start]").onclick = timer.runThisTimer.bind(timer);
     newTimerDiv.id = 'timer-' + timer.number;
 
     attachGeneralInfoPopover(newTimerDiv);
