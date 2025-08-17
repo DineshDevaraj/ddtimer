@@ -3,15 +3,14 @@ class TimerCard {
 
     static _timer = null;
     static _instance = null;
-    static _running_status = false;
+    static _runningStatus = false;
     static _remainingSeconds = 0;
 
     static _dom = document.querySelector('.timer-card');
 
     constructor() {
-        if (TimerCard._instance) {
+        if (TimerCard._instance)
             return TimerCard._instance;
-        }
         TimerCard._instance = this;
     }
 
@@ -37,13 +36,13 @@ class TimerCard {
     static pause() {
         clearInterval(TimerCard._intervalObject);
         console.log(`Timer ${TimerCard._timer.title} paused.`);
-        TimerCard._running_status = false;
+        TimerCard._runningStatus = false;
     }
 
     static stop() {
         clearInterval(TimerCard._intervalObject);
         console.log(`Timer ${TimerCard._timer.title} stopped.`);
-        TimerCard._running_status = false;
+        TimerCard._runningStatus = false;
         TimerCard._remainingSeconds = 0;
     }
 }

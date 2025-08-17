@@ -1,7 +1,7 @@
 
 function attachGeneralInfoPopover(parent) {
     const timerPallet = parent.closest('.timer-pallet');
-    const timerStartButton = parent.querySelector('[title=Start]');
+    const timerStartButton = parent.querySelector('[name=Start]');
 
     const popover = new bootstrap.Popover(timerStartButton, {
         html: true,
