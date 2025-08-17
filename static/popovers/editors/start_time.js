@@ -20,7 +20,7 @@ function attachStartTimeEditor(parent) {
         html: true,
         content: document.getElementById('start-time-editor').innerHTML,
         customClass: timerPallet.id,
-        title: "Set Start Time",
+        title: "Start Time",
         placement: 'bottom',
         sanitize: false
     });

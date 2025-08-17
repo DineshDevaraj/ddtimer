@@ -1,18 +1,22 @@
 <div id="timer-duration-editor" class="d-none inplace-editor">
-    <div class="d-flex inplace-editor-controls">
-        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:50px; font-size: 0.95em;" min="0" max="12" 
-            value="00" name="hour" onkeydown="return false" />
-        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:50px; font-size: 0.95em;" min="0" max="59"
-            value="15" name="minute" />
-        <input type="number" class="form-control hide-caret mt-0 py-1 px-1" style="width:50px; font-size: 0.95em;" min="0" max="59"
-            value="00" name="second" />
-        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Ok" 
-            onclick="return setTimerDuration(event)">
-                <i class="bi bi-check-lg"></i>
-        </button>
-        <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Cancel"
-            onclick="return cancelTimerDurationEditor(event)">
-                <i class="bi bi-x-lg"></i>
-        </button>
+    <div class="inplace-editor-controls">
+        <div class="d-flex">
+            <input type="number" class="form-control hide-caret mt-0 py-1 px-1 me-1" style="width:45px; font-size: 0.95em;" 
+                min="0" max="12" value="00" name="hour" onkeydown="return false" />
+            <input type="number" class="form-control hide-caret mt-0 py-1 px-1 me-1" style="width:45px; font-size: 0.95em;" 
+                min="0" max="59" value="15" name="minute" />
+            <input type="number" class="form-control hide-caret mt-0 py-1 px-1 me-1" style="width:45px; font-size: 0.95em;" 
+                min="0" max="59" value="00" name="second" />
+        </div>
+        <div class="d-flex my-1 justify-content-end mt-3">
+            <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1 me-1" name="Ok" 
+                onclick="return setTimerDuration(event)" style="font-size: 0.95em;">
+                    <i class="bi bi-check-lg"></i>
+            </button>
+            <button type="button" class="btn btn-light border-secondary mt-0 py-0 px-1" name="Cancel"
+                onclick="return cancelTimerDurationEditor(event)" style="font-size: 0.95em;">
+                    <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
     </div>
 </div>

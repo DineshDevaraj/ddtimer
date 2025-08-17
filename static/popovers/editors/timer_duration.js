@@ -7,7 +7,7 @@ function attachTimerDurationEditor(parent) {
         html: true,
         content: document.getElementById('timer-duration-editor').innerHTML,
         customClass: timerPallet.id,
-        title: "Set Timer Duration",
+        title: "Timer Duration",
         placement: 'bottom',
         sanitize: false
     });

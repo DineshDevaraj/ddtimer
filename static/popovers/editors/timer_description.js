@@ -7,7 +7,7 @@ function attachTimerDescriptionEditor(parent) {
         html: true,
         content: document.getElementById('timer-description-editor').innerHTML,
         customClass: timerPallet.id + " wide-popover",
-        title: "Set Timer Description",
+        title: "Timer Description",
         placement: 'bottom',
         sanitize: false
     });
