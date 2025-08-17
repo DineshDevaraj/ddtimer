@@ -2,30 +2,8 @@
 function attachGeneralInfoPopover(parent) {
     const timerPallet = parent.closest('.timer-pallet');
     const timerStartButton = parent.querySelector('[name=Start]');
-
-    const popover = new bootstrap.Popover(timerStartButton, {
-        html: true,
-        content: document.getElementById('general-info').innerHTML,
-        customClass: timerPallet.id,
-        title: "Info",
-        placement: 'bottom',
-        sanitize: false
-    });
-
-    timerStartButton.addEventListener('shown.bs.popover', () => {
-        const popoverDom = document.querySelector('.popover');
-        const timerPallet = TimerPallet.getByTimerId(popoverDom.classList[1]);
-        const timeLeft = timerPallet.startTime.timeLeft();
-        let content = "";
-        if (timerPallet.startTime.aheadOfCurrentTime()) {
-            content += `Still time left is ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
-        } else {
-            content += `Already past by ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
-        }
-        content += `Are you sure you want to start this timer?`;
-        popoverDom.querySelector('p').textContent = content;
-    });
-
+    timerStartButton.addEventListener('shown.bs.popover', popoverShownHook);
+    attachPopover(timerPallet.id, timerStartButton);
     document.addEventListener('click', function (e) {
         const popoverElement = document.querySelector('.popover');
         if (!timerStartButton.contains(e.target) && (!popoverElement || !popoverElement.contains(e.target))) {
@@ -35,6 +13,31 @@ function attachGeneralInfoPopover(parent) {
             }
         }
     });
+}
+
+function attachPopover(timerId, domObj) {
+    new bootstrap.Popover(domObj, {
+        html: true,
+        title: "Info",
+        content: document.getElementById('general-info').innerHTML,
+        customClass: timerId,
+        placement: 'bottom',
+        sanitize: false
+    });
+}
+
+function popoverShownHook() {
+    let content = "";
+    const popoverDom = document.querySelector('.popover');
+    const timerPallet = TimerPallet.getByTimerId(popoverDom.classList[1]);
+    const timeLeft = timerPallet.startTime.timeLeft();
+    if (timerPallet.startTime.aheadOfCurrentTime()) {
+        content += `Still time left is ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+    } else {
+        content += `Already past by ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+    }
+    content += `Are you sure you want to start this timer?`;
+    popoverDom.querySelector('p').textContent = content;
 }
 
 function generalInfoOk(event) {
