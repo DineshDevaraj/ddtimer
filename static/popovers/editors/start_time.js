@@ -3,11 +3,12 @@ function setStartTime(event) {
     const popoverDom = event.target.closest('.popover');
     const hour = popoverDom.querySelector('input[name=Hour]').value;
     const minute = popoverDom.querySelector('input[name=Minute]').value;
+    const second = popoverDom.querySelector('input[name=Second]').value;
     const ampm = popoverDom.querySelector('select[name=AM-PM]').value;
     const timerPallet = document.getElementById(popoverDom.classList[1]);
     const startTimeDiv = timerPallet.querySelector('[name=start-time]');
     bootstrap.Popover.getInstance(startTimeDiv).hide();
-    const formattedTime = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')} ${ampm}`;
+    const formattedTime = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}:${second.padStart(2, '0')} ${ampm}`;
     startTimeDiv.textContent = formattedTime;
 }
 
@@ -28,6 +29,7 @@ function attachStartTimeEditor(parent) {
         const popoverElement = document.querySelector('.popover');
         popoverElement.querySelector('input[name=Hour]').value = startTimeDiv.textContent.split(':')[0];
         popoverElement.querySelector('input[name=Minute]').value = startTimeDiv.textContent.split(':')[1].split(' ')[0];
+        popoverElement.querySelector('input[name=Second]').value = startTimeDiv.textContent.split(':')[2].split(' ')[0];
         popoverElement.querySelector('select[name=AM-PM]').value = startTimeDiv.textContent.split(' ')[1];
     });
 

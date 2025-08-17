@@ -82,8 +82,8 @@ class TimerPallet {
     get startTime() {
         const dom = this.#dom.querySelector('[name=start-time]');
         const [time, meridian] = dom.textContent.split(' ');
-        const [hour, minute] = time.split(':');
-        return new Time(hour, minute, meridian);
+        const [hour, minute, second] = time.split(':');
+        return new Time(hour, minute, second, meridian);
     }
 
     get durationInSeconds() {

@@ -32,9 +32,9 @@ function popoverShownHook() {
     const timerPallet = TimerPallet.getByTimerId(popoverDom.classList[1]);
     const timeLeft = timerPallet.startTime.timeLeft();
     if (timerPallet.startTime.aheadOfCurrentTime()) {
-        content += `Still time left is ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+        content += `Still time left is ${timeLeft.hour}h ${timeLeft.minute}m ${timeLeft.second}s.\n`;
     } else {
-        content += `Already past by ${timeLeft.hour} hours and ${timeLeft.minute} minutes.\n`;
+        content += `Already past by ${timeLeft.hour}h ${timeLeft.minute}m ${timeLeft.second}s.\n`;
     }
     content += `Are you sure you want to start this timer?`;
     popoverDom.querySelector('p').textContent = content;

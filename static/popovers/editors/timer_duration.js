@@ -16,6 +16,7 @@ function attachTimerDurationEditor(parent) {
         const popoverElement = document.querySelector('.popover');
         popoverElement.querySelector('input[name=hour]').value = timerDurationDiv.textContent.split(':')[0];
         popoverElement.querySelector('input[name=minute]').value = timerDurationDiv.textContent.split(':')[1].split(' ')[0];
+        popoverElement.querySelector('input[name=second]').value = timerDurationDiv.textContent.split(':')[2].split(' ')[0];
     });
 
     document.addEventListener('click', function (e) {
@@ -33,10 +34,11 @@ function setTimerDuration(event) {
     const popoverDom = event.target.closest('.popover');
     const hour = popoverDom.querySelector('input[name=hour]').value;
     const minute = popoverDom.querySelector('input[name=minute]').value;
+    const second = popoverDom.querySelector('input[name=second]').value;
     const timerPallet = document.getElementById(popoverDom.classList[1]);
     const timerDurationDiv = timerPallet.querySelector('[name=timer-duration]');
     bootstrap.Popover.getInstance(timerDurationDiv).hide();
-    const formattedDuration = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
+    const formattedDuration = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}:${second.padStart(2, '0')}`;
     timerDurationDiv.textContent = formattedDuration;
 }
 
