@@ -13,6 +13,7 @@ function addNewTimer(event) {
     newTimerDiv.onclick = timer.runThisTimer.bind(timer);
     newTimerDiv.id = 'timer-' + timer.number;
 
+    attachGeneralInfoPopover(newTimerDiv);
     attachTimerDescriptionEditor(newTimerDiv);
     attachTimerDurationEditor(newTimerDiv);
     attachStartTimeEditor(newTimerDiv);

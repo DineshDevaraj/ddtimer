@@ -1,5 +1,5 @@
 
-function attachTimerDescriptionEditor(parent) {
+function attachGeneralInfoPopover(parent) {
     const timerPallet = parent.closest('.timer-pallet');
     const timerStartButton = parent.querySelector('[title=Start]');
 
