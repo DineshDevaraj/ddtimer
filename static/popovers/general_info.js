@@ -27,3 +27,22 @@ function attachGeneralInfoPopover(parent) {
         }
     });
 }
+
+function generalInfoOk(event) {
+    closePopover(event);
+    const popoverDom = event.target.closest('.popover');
+    const timer = TimerPallet.getByTimerId(popoverDom.classList[1]);
+    TimerCard.inject(timer);
+    TimerCard.start();
+}
+
+function generalInfoCancel(event) {
+    closePopover(event);
+}
+
+function closePopover(event) {
+    const popoverDom = event.target.closest('.popover');
+    const timerPallet = document.getElementById(popoverDom.classList[1]);
+    const startButton = timerPallet.querySelector('[name=Start]');
+    bootstrap.Popover.getInstance(startButton).hide();
+}
