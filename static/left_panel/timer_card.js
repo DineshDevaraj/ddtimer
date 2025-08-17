@@ -15,6 +15,8 @@ class TimerCard {
     }
 
     static inject(timer) {
+        if (TimerCard._runningStatus)
+            TimerCard.stop();
         TimerCard._timer = timer;
     }
 
@@ -27,8 +29,6 @@ class TimerCard {
     }
 
     static start() {
-        if (TimerCard._runningStatus)
-            TimerCard.stop();
         TimerCard._runningStatus = true;
         console.log(`Timer ${TimerCard._timer.title} started.`);
         TimerCard._remainingSeconds = TimerCard._timer.durationInSeconds;
