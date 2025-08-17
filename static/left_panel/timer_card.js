@@ -27,9 +27,12 @@ class TimerCard {
     }
 
     static start() {
+        if (TimerCard._runningStatus)
+            TimerCard.stop();
+        TimerCard._runningStatus = true;
         console.log(`Timer ${TimerCard._timer.title} started.`);
         TimerCard._remainingSeconds = TimerCard._timer.durationInSeconds;
-        setInterval(TimerCard._forEachSecond, 1000);
+        TimerCard._intervalObject = setInterval(TimerCard._forEachSecond, 1000);
         TimerCard._forEachSecond();
     }
 
