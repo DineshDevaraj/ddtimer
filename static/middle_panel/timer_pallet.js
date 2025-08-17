@@ -105,12 +105,7 @@ class TimerPallet {
         return new Description(title, speaker, note);
     }
 
-    runThisTimer(event) {
-        this.#dom = event.target.closest('.timer-pallet');
-        if (!this.startTime.pastCurrentTime()) {
-            console.log("Time has not yet arrived.");
-            return;
-        }
+    runThisTimer() {
         TimerCard.inject(this);
         TimerCard.start();
     }
