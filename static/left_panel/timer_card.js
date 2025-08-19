@@ -17,6 +17,7 @@ class TimerCard {
     static inject(timer) {
         if (TimerCard._runningStatus)
             TimerCard.stop();
+        TimerCard._dom.querySelector("[name=title]").textContent = timer.title;
         TimerCard._timer = timer;
     }
 
