@@ -1,19 +1,41 @@
 
 class Time {
+
+    #hour;
+    #minute;
+    #second;
+    #meridian;
+
     constructor(hour, minute, second, meridian) {
         if (typeof hour === 'string')
             hour = parseInt(hour, 10);
-        this.hour = hour;
+        this.#hour = hour;
 
         if (typeof minute === 'string')
             minute = parseInt(minute, 10);
-        this.minute = minute;
+        this.#minute = minute;
 
         if (typeof second === 'string')
             second = parseInt(second, 10);
-        this.second = second;
+        this.#second = second;
 
-        this.meridian = meridian;
+        this.#meridian = meridian;
+    }
+
+    get hour() {
+        return this.#hour;
+    }
+
+    get minute() {
+        return this.#minute;
+    }
+
+    get second() {
+        return this.#second;
+    }
+
+    get meridian() {
+        return this.#meridian;
     }
 
     toDate() {
@@ -22,15 +44,15 @@ class Time {
             now.getFullYear(),
             now.getMonth(),
             now.getDate(),
-            this.meridian === 'PM' ? (parseInt(this.hour, 10) % 12) + 12 : parseInt(this.hour, 10) % 12,
-            parseInt(this.minute, 10),
-            parseInt(this.second, 10)
+            this.#meridian === 'PM' ? (parseInt(this.#hour, 10) % 12) + 12 : parseInt(this.#hour, 10) % 12,
+            parseInt(this.#minute, 10),
+            parseInt(this.#second, 10)
         );
         return startTime;
     }
 
     toString() {
-        return `${this.hour}:${this.minute}:${this.second} ${this.meridian}`;
+        return `${this.#hour}:${this.#minute}:${this.#second} ${this.#meridian}`;
     }
 
     aheadOfCurrentTime() {

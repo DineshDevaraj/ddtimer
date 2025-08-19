@@ -86,10 +86,24 @@ class TimerPallet {
         return new Time(hour, minute, second, meridian);
     }
 
+    get duration() {
+        const dom = this.#dom.querySelector('[name=timer-duration]');
+        const [hours, minutes, seconds] = dom.textContent.split(':');
+        return new Duration(parseInt(hours, 10), parseInt(minutes, 10), parseInt(seconds, 10));
+    }
+
     get durationInSeconds() {
         const dom = this.#dom.querySelector('[name=timer-duration]');
-        const [minutes, seconds] = dom.textContent.split(':');
-        return parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+        const [hours, minutes, seconds] = dom.textContent.split(':');
+        return parseInt(hours, 10) * 3600 + parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+    }
+
+    get endTime() {
+        const e = new Date(this.startTime.toDate());
+        e.setHours(e.getHours() + this.duration.hours);
+        e.setMinutes(e.getMinutes() + this.duration.minutes);
+        e.setSeconds(e.getSeconds() + this.duration.seconds);
+        return new Time(e.getHours()%12, e.getMinutes(), e.getSeconds(), e.getHours() >= 12 ? 'PM' : 'AM');
     }
 
     get title() {
