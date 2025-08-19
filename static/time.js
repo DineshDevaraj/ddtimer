@@ -52,7 +52,8 @@ class Time {
     }
 
     toString() {
-        return `${this.#hour}:${this.#minute}:${this.#second} ${this.#meridian}`;
+        return `${String(this.#hour).padStart(2, '0')}:${String(this.#minute).padStart(2, '0')}:` +
+            `${String(this.#second).padStart(2, '0')} ${this.#meridian}`;
     }
 
     aheadOfCurrentTime() {

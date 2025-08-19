@@ -8,7 +8,7 @@ class TimerPallet {
     static #objectPool = new Map();
     static #disableConstructor = true;
 
-    static #first = TimerPallet.#getFirstTimerPallet()
+    static #first = TimerPallet.#getFirstInstance()
 
     constructor() {
         if (TimerPallet.#disableConstructor) {
@@ -35,7 +35,7 @@ class TimerPallet {
         return newInstance; 
     }
 
-    static #getFirstTimerPallet() {
+    static #getFirstInstance() {
         const newInstance = TimerPallet.#getInstance();
         const dom = document.getElementById("timer-1");
         if (!dom) {

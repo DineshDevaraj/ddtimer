@@ -4,11 +4,11 @@ function setStartTime(event) {
     const hour = popoverDom.querySelector('input[name=Hour]').value;
     const minute = popoverDom.querySelector('input[name=Minute]').value;
     const second = popoverDom.querySelector('input[name=Second]').value;
-    const ampm = popoverDom.querySelector('select[name=AM-PM]').value;
+    const meridian = popoverDom.querySelector('select[name=AM-PM]').value;
     const timerPallet = document.getElementById(popoverDom.classList[1]);
     const startTimeDiv = timerPallet.querySelector('[name=start-time]');
     bootstrap.Popover.getInstance(startTimeDiv).hide();
-    const formattedTime = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}:${second.padStart(2, '0')} ${ampm}`;
+    const formattedTime = `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}:${second.padStart(2, '0')} ${meridian}`;
     startTimeDiv.textContent = formattedTime;
 }
 
