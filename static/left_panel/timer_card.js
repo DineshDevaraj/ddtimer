@@ -22,10 +22,11 @@ class TimerCard {
     }
 
     static _forEachSecond() {
+        const hours = Math.floor(TimerCard._remainingSeconds / 3600);
+        const minutes = Math.floor((TimerCard._remainingSeconds % 3600) / 60);
         const seconds = TimerCard._remainingSeconds % 60;
-        const minutes = Math.floor(TimerCard._remainingSeconds / 60);
         const countdownDisplay = TimerCard._dom.querySelector('.countdown-display');
-        countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        countdownDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         if (TimerCard._remainingSeconds-- <= 0) TimerCard.stop();
     }
 
