@@ -14,11 +14,15 @@ class TimerCard {
         TimerCard._instance = this;
     }
 
-    static inject(timer) {
+    static injectTimer(timer) {
         if (TimerCard._runningStatus)
             TimerCard.stop();
         TimerCard._dom.querySelector("[name=title]").textContent = timer.title;
         TimerCard._timer = timer;
+    }
+
+    static injectMessage(message) {
+        TimerCard._dom.querySelector("[name=message]").textContent = message;
     }
 
     static _forEachSecond() {
