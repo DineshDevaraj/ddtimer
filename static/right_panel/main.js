@@ -15,5 +15,5 @@ document.addEventListener('DOMContentLoaded', function() {
     const messagePallet = MessagePallet.getByMessageId("message-1");
     messagePallet.dom.querySelector('[name=delete]').onclick = deleteMessage;
     const addNewMessageButton = document.getElementById('add-new-message');
-    addNewMessageButton.addEventListener('click', addNewMessage);
+    addNewMessageButton.onclick = addNewMessage;
 });

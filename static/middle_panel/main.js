@@ -9,8 +9,13 @@ function addNewTimer(event) {
     attachTimerDurationEditor(timer.dom);
     attachStartTimeEditor(timer.dom);
 
+    timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
     const middlePanel = document.querySelector('.middle-panel .row');
     middlePanel.appendChild(timer.dom);
+}
+
+function deleteTimer(event) {
+    event.target.closest('.timer-pallet').remove();
 }
 
 function setTimerElementsValue(timer) {
@@ -31,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     attachTimerDurationEditor(timer.dom);
     attachStartTimeEditor(timer.dom);
 
+    timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
     const addNewTimerButton = document.getElementById('add-new-timer');
-    addNewTimerButton.addEventListener('click', addNewTimer);
+    addNewTimerButton.onclick = addNewTimer;
 });
