@@ -49,10 +49,18 @@
 }
 
 .fs-7 {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 .fs-8 {
+    font-size: 0.80rem;
+}
+
+.fs-9 {
+    font-size: 0.75rem;
+}
+
+.fs-10 {
     font-size: 0.70rem;
 }
 
@@ -76,4 +84,40 @@
 
 .wide-popover {
   width: 800px !important; /* Set a fixed width for the popover */
+}
+
+.bs-gray-100 {
+  background-color: #f8f9fa;
+}
+
+.bs-gray-200 {
+  background-color: #e9ecef;
+}
+
+.bs-gray-300 {
+  background-color: #dee2e6;
+}
+
+.bs-gray-400 {
+  background-color: #ced4da;
+}
+
+.bs-gray-500 {
+  background-color: #adb5bd;
+}
+
+.bs-gray-600 {
+  background-color: #6c757d;
+}
+
+.bs-gray-700 {
+  background-color: #495057;
+}
+
+.bs-gray-800 {
+  background-color: #343a40;
+}
+
+.bs-gray-900 {
+  background-color: #212529;
 }

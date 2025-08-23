@@ -1,5 +1,24 @@
 <!-- Right Panel -->
 <div class="col-md-2 right-panel p-3 border-start border-bottom">
     <h5>Messages</h5>
-    <p>Additional info or controls.</p>
+    <div class="message-controls mb-2 border p-2 rounded bs-gray-100 mt-3">
+        <textarea class="form-control mb-2 fs-7" rows="2" placeholder="Type your message..." style="resize: none;"></textarea>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-light btn-sm border rounded fs-9 my-1 p-1 me-1">
+                <i class="bi bi-record-circle"></i>
+            </button>
+            <button type="button" class="btn btn-light btn-sm border rounded fs-9 my-1 p-1 me-1">
+                <i class="bi bi-lightning-charge"></i>
+            </button>
+            <button type="button" class="btn btn-light btn-sm border rounded fs-9 my-1 p-1">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </div>
+    <div class="d-grid gap-2 mt-3">
+        <button id="add-new-message" class="btn btn-light border bi bi-plus-circle mt-0 py-1 px-2 fw-bold"
+            style="font-size: 0.75em;">
+            &nbsp; Add New Message
+        </button>
+    </div>
 </div>
