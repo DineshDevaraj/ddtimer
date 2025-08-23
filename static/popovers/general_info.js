@@ -44,7 +44,7 @@ function generalInfoOk(event) {
     closePopover(event);
     const popoverDom = event.target.closest('.popover');
     const timer = TimerPallet.getByTimerId(popoverDom.classList[1]);
-    TimerCard.injectTimer(timer);
+    TimerCard.inject(timer);
     TimerCard.start();
 }
 

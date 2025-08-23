@@ -15,7 +15,7 @@ function deleteMessage(event) {
 function showMessage(event) {
     const messagePallet = event.target.closest('.message-pallet');
     const message = messagePallet.querySelector('textarea').value;
-    TimerCard.injectMessage(message);
+    TimerCard.showMessage(message);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
