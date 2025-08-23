@@ -1,6 +1,16 @@
 <!-- Middle Panel -->
 <div class="col-md-8 middle-panel border-bottom p-3">
-    <h5 class="mb-3">Timers</h5>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5>Timers</h5>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-light btn-sm border rounded fs-9 my-1 p-1 me-1 bi-record-circle">
+                Blackout
+            </button>
+            <button type="button" class="btn btn-light btn-sm border rounded fs-9 my-1 p-1 me-1 bi-lightning-charge">
+                Flash
+            </button>
+        </div>
+    </div>
     <div class="row gy-3">
         {% include "middle_panel/popovers/general_info.html" %}
         {% include "middle_panel/popovers/editors/start_time.html" %}
@@ -11,7 +21,7 @@
     <div class="d-flex justify-content-center mt-3">
         <button id="add-new-timer" class="btn btn-light border bi bi-plus-circle mt-0 py-1 px-2 fw-bold"
             style="font-size: 0.75em;">
-            &nbsp; Add New Timer
+            &nbsp; New Timer
         </button>
     </div>
 </div>
