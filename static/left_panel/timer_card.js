@@ -43,7 +43,7 @@ class TimerCard {
     }
 
     static toggleTimerFlash() {
-        const timerDisplay = TimerCard.#dom.querySelector(".timer-display");
+        const timerDisplay = TimerCard.#dom.querySelector(".countdown-display");
         if (TimerCard.#timerFlashStatus) {
             TimerCard.#timerFlashStatus = false;
             timerDisplay.classList.remove("flash");

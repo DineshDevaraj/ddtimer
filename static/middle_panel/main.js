@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
     attachTimerDurationEditor(timer.dom);
     attachStartTimeEditor(timer.dom);
 
+    const middlePanel = document.querySelector('.middle-panel');
+    middlePanel.querySelector('[name=flash]').onclick = TimerCard.toggleTimerFlash;
+
     timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
     const addNewTimerButton = document.getElementById('add-new-timer');
     addNewTimerButton.onclick = addNewTimer;
