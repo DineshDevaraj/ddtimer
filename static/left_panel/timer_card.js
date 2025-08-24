@@ -29,16 +29,26 @@ class TimerCard {
 
     static hideMessage() {
         TimerCard.#dom.querySelector("[name=message]").textContent = '';
+        TimerCard.stopMessageFlash();
+    }
+
+    static startMessageFlash() {
+        TimerCard.#messageFlashStatus = true;
+        const message = TimerCard.#dom.querySelector("[name=message]");
+        message.classList.add("flash");
+    }
+
+    static stopMessageFlash() {
+        TimerCard.#messageFlashStatus = false;
+        const message = TimerCard.#dom.querySelector("[name=message]");
+        message.classList.remove("flash");
     }
 
     static toggleMessageFlash() {
-        const message = TimerCard.#dom.querySelector("[name=message]");
         if (TimerCard.#messageFlashStatus) {
-            TimerCard.#messageFlashStatus = false;
-            message.classList.remove("flash");
+            TimerCard.stopMessageFlash();
         } else {
-            TimerCard.#messageFlashStatus = true;
-            message.classList.add("flash");
+            TimerCard.startMessageFlash();
         }
     }
 
