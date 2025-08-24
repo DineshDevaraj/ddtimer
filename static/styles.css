@@ -130,3 +130,21 @@
 .flash {
   animation: flash 1s infinite;
 }
+
+/* Enable scrolling but hide scrollbar */
+
+/* For WebKit browsers: Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
