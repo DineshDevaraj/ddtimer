@@ -37,10 +37,25 @@ document.addEventListener('DOMContentLoaded', function() {
     attachStartTimeEditor(timer.dom);
 
     const middlePanel = document.querySelector('.middle-panel');
-    middlePanel.querySelector('[name=flash]').onclick = TimerCard.toggleTimerFlash;
-    middlePanel.querySelector('[name=blackout]').onclick = TimerCard.toggleBlackoutOverlay;
+    middlePanel.querySelector('[name=flash]').onclick = flashTimer;
+    middlePanel.querySelector('[name=blackout]').onclick = timerCardBlackout;
 
     timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
     const addNewTimerButton = document.getElementById('add-new-timer');
     addNewTimerButton.onclick = addNewTimer;
 });
+
+function flashTimer(event) {
+    event.target.classList.toggle("border-danger");
+    event.target.querySelector('i').classList.toggle("bi-lightning-charge-fill");
+    event.target.querySelector('i').classList.toggle("bi-lightning-charge");
+    event.target.querySelector('i').classList.toggle("text-danger");
+    event.target.querySelector('i').classList.toggle("flash");
+    TimerCard.toggleTimerFlash();
+}
+
+function timerCardBlackout(event) {
+    event.target.classList.toggle("border-danger");
+    event.target.querySelector('i').classList.toggle("text-danger");
+    TimerCard.toggleBlackoutOverlay();
+}

@@ -1,6 +1,6 @@
 
 let flashStatus = false;
-let previousPalletShown = null;
+let currentPalletShown = null;
 
 function addNewMessage(event) {
     const message = MessagePallet.clone();
@@ -23,22 +23,26 @@ function setEventHandlers(messagePallet) {
 
 function deleteMessage(event) {
     const messagePallet = event.target.closest('.message-pallet');
-    if (previousPalletShown === messagePallet) {
-        previousPalletShown = null;
+    if (currentPalletShown === messagePallet) {
+        currentPalletShown = null;
         TimerCard.hideMessage();
+        TimerCard.hideMessageOverlay();
+        resetMessageFocusButton();
+        resetMessageFlashButton();
     }
     messagePallet.remove();
 }
 
 function showMessage(event) {
-    if (previousPalletShown) {
-        previousPalletShown.querySelector('[name=show]').classList.remove('d-none');
-        previousPalletShown.querySelector('[name=hide]').classList.add('d-none');
+    if (currentPalletShown) {
+        currentPalletShown.querySelector('[name=show]').classList.remove('d-none');
+        currentPalletShown.querySelector('[name=hide]').classList.add('d-none');
+        currentPalletShown.querySelector('textarea').removeAttribute('disabled');
     }
     const messagePallet = event.target.closest('.message-pallet');
     messagePallet.querySelector('[name=hide]').classList.remove('d-none');
     messagePallet.querySelector('[name=show]').classList.add('d-none');
-    previousPalletShown = messagePallet
+    currentPalletShown = messagePallet
 
     messagePallet.querySelector('textarea').setAttribute('disabled', 'disabled');
     const message = messagePallet.querySelector('textarea').value;
@@ -46,12 +50,40 @@ function showMessage(event) {
 }
 
 function hideMessage(event) {
+    currentPalletShown = null;
+
+    TimerCard.hideMessage();
+    TimerCard.hideMessageOverlay();
+
+    resetMessagePallet(event);
+    resetMessageFocusButton();
+    resetMessageFlashButton();
+}
+
+function resetMessagePallet(event) {
     const messagePallet = event.target.closest('.message-pallet');
     messagePallet.querySelector('textarea').removeAttribute('disabled');
     messagePallet.querySelector('[name=show]').classList.remove('d-none');
     messagePallet.querySelector('[name=hide]').classList.add('d-none');
-    previousPalletShown = null;
-    TimerCard.hideMessage();
+}
+
+function resetMessageFocusButton() {
+    const button = document.querySelector('.right-panel [name=focus]');
+    button.classList.remove("border-danger");
+
+    const icon = button.querySelector('i');
+    icon.classList.remove("text-danger");
+}
+
+function resetMessageFlashButton() {
+    const button = document.querySelector('.right-panel [name=flash]');
+    button.classList.remove("border-danger");
+
+    const icon = button.querySelector('i');
+    icon.classList.add("bi-lightning-charge");
+    icon.classList.remove("bi-lightning-charge-fill");
+    icon.classList.remove("text-danger");
+    icon.classList.remove("flash");
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -60,8 +92,23 @@ document.addEventListener('DOMContentLoaded', function() {
     addNewMessageButton.onclick = addNewMessage;
 
     const rightPanel = document.querySelector('.right-panel');
-    rightPanel.querySelector('[name=flash]').onclick = TimerCard.toggleMessageFlash;
-    rightPanel.querySelector('[name=focus]').onclick = TimerCard.toggleMessageOverlay;
+    rightPanel.querySelector('[name=flash]').onclick = flashMessage;
+    rightPanel.querySelector('[name=focus]').onclick = focusMessage;
 
     setEventHandlers(messagePallet);
 });
+
+function flashMessage(event) {
+    event.target.classList.toggle("border-danger");
+    event.target.querySelector('i').classList.toggle("bi-lightning-charge-fill");
+    event.target.querySelector('i').classList.toggle("bi-lightning-charge");
+    event.target.querySelector('i').classList.toggle("text-danger");
+    event.target.querySelector('i').classList.toggle("flash");
+    TimerCard.toggleMessageFlash();
+}
+
+function focusMessage(event) {
+    event.target.classList.toggle("border-danger");
+    event.target.querySelector('i').classList.toggle("text-danger");
+    TimerCard.toggleMessageOverlay();
+}

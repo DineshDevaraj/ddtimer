@@ -46,6 +46,10 @@ class TimerCard {
         TimerCard.#dom.querySelector('.message-overlay').classList.toggle('d-none');
     }
 
+    static hideMessageOverlay() {
+        TimerCard.#dom.querySelector('.message-overlay').classList.add('d-none');
+    }
+
     static toggleBlackoutOverlay() {
         TimerCard.#dom.querySelector('.blackout-overlay').classList.toggle('d-none');
     }
