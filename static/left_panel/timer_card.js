@@ -56,16 +56,17 @@ class TimerCard {
     }
 
     static showOnlyMessage() {
-        TimerCard.#dom.querySelector(".countdown-display").classList.add("d-none");
-        TimerCard.#dom.querySelector("[name=header]").classList.add("d-none");
+        TimerCard.#dom.querySelector(".header").classList.add("d-none");
         TimerCard.#dom.querySelector("[name=title]").classList.add("d-none");
-
+        TimerCard.#dom.querySelector(".countdown-display").classList.add("d-none");
+        TimerCard.#dom.querySelector(".progress").classList.add("d-none");
     }
 
     static showAllElements() {
-        TimerCard.#dom.querySelector(".countdown-display").classList.remove("d-none");
-        TimerCard.#dom.querySelector("[name=header]").classList.remove("d-none");
+        TimerCard.#dom.querySelector(".header").classList.remove("d-none");
         TimerCard.#dom.querySelector("[name=title]").classList.remove("d-none");
+        TimerCard.#dom.querySelector(".countdown-display").classList.remove("d-none");
+        TimerCard.#dom.querySelector(".progress").classList.remove("d-none");
     }
 
     static toggleMessageFocus() {
