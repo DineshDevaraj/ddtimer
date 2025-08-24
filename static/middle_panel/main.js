@@ -46,16 +46,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function flashTimer(event) {
-    event.target.classList.toggle("border-danger");
-    event.target.querySelector('i').classList.toggle("bi-lightning-charge-fill");
-    event.target.querySelector('i').classList.toggle("bi-lightning-charge");
-    event.target.querySelector('i').classList.toggle("text-danger");
-    event.target.querySelector('i').classList.toggle("flash");
+    const button = event.target.closest('button');
+    button.classList.toggle("border-danger");
+    button.querySelector('i').classList.toggle("bi-lightning-charge-fill");
+    button.querySelector('i').classList.toggle("bi-lightning-charge");
+    button.querySelector('i').classList.toggle("text-danger");
+    button.querySelector('i').classList.toggle("flash");
     TimerCard.toggleTimerFlash();
 }
 
 function timerCardBlackout(event) {
-    event.target.classList.toggle("border-danger");
-    event.target.querySelector('i').classList.toggle("text-danger");
+    const button = event.target.closest('button');
+    button.classList.toggle("border-danger");
+    button.querySelector('i').classList.toggle("text-danger");
     TimerCard.toggleBlackoutOverlay();
 }
