@@ -24,11 +24,13 @@ class TimerCard {
     }
 
     static showMessage(message) {
+        TimerCard.#dom.querySelector(".countdown-display").classList.remove("fs-1");
         TimerCard.#dom.querySelector("[name=message]").textContent = message;
     }
 
     static hideMessage() {
         TimerCard.#dom.querySelector("[name=message]").textContent = '';
+        TimerCard.#dom.querySelector(".countdown-display").classList.add("fs-1");
         TimerCard.stopMessageFlash();
     }
 
