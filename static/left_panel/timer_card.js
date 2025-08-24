@@ -21,6 +21,10 @@ class TimerCard {
         TimerCard.#timer = timer;
     }
 
+    static get timer() {
+        return TimerCard.#timer;
+    }
+
     static showMessage(message) {
         TimerCard.#dom.querySelector(".countdown-display").classList.remove("fs-1");
         TimerCard.#dom.querySelector(".timer-card > .message").textContent = message;

@@ -10,8 +10,14 @@ function addNewTimer(event) {
     attachStartTimeEditor(timer.dom);
 
     document.querySelector('.middle-panel .row').appendChild(timer.dom);
+
+    timer.dom.querySelector('[name=Start]').classList.remove('d-none');
     timer.dom.querySelector('[name=Delete]').onclick = deleteTimer;
+
+    timer.dom.querySelector('[name=Resume]').classList.add('d-none');
     timer.dom.querySelector('[name=Resume]').onclick = resumeTimer;
+
+    timer.dom.querySelector('[name=Pause]').classList.add('d-none');
     timer.dom.querySelector('[name=Pause]').onclick = pauseTimer;
 }
 
