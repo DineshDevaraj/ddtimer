@@ -19,7 +19,12 @@ function setEventHandlers(messagePallet) {
 }
 
 function deleteMessage(event) {
-    event.target.closest('.message-pallet').remove();
+    const messagePallet = event.target.closest('.message-pallet');
+    if (previousPalletShown === messagePallet) {
+        previousPalletShown = null;
+        TimerCard.hideMessage();
+    }
+    messagePallet.remove();
 }
 
 function showMessage(event) {
