@@ -1,5 +1,11 @@
-<div class="timer-card border rounded" style="min-height: 160px;">
-    <div class="overlay rounded d-none"></div> <!-- Blanket cover overlay -->
+
+<div class="timer-card border rounded">
+    <div class="message-overlay rounded d-none">
+        <div class="message fs-3 text-center"></div>
+    </div>
+    
+    <div class="blackout-overlay rounded d-none"></div>
+    
     <div class="header d-flex border-bottom align-items-center bg-light">
         <div class="d-flex justify-content-start align-items-center">
             <button id="countdown-start" class="btn btn-light btn-sm p-0 px-1 first-button"
@@ -18,11 +24,15 @@
             </button>
         </div>
     </div>
-    <h6 class="text-center mt-3 mb-2" name="title">Title</h6>
+
+    <h6 class="title text-center mt-3 mb-2">Title</h6>
+    
     <div class="my-3 text-center">
         <span class="fs-1 countup-display countdown-display m-0">00:00:00</span>
     </div>
-    <div name="message" class="fs-3 text-center"></div>
+    
+    <div class="message fs-3 text-center"></div>
+    
     <div class="progress mt-3">
         <div id="timer-progress-green" class="progress-bar bg-success" role="progressbar" style="width: 60%;" 
             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>

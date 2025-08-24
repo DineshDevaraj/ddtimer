@@ -4,9 +4,6 @@ class TimerCard {
     static #timer = null;
     static #instance = null;
     static #runningStatus = false;
-    static #messageFocusStatus = false;
-    static #messageFlashStatus = false;
-    static #timerFlashStatus = false;
     static #remainingSeconds = 0;
 
     static #dom = document.querySelector('.timer-card');
@@ -20,78 +17,37 @@ class TimerCard {
     static inject(timer) {
         if (TimerCard.#runningStatus)
             TimerCard.stop();
-        TimerCard.#dom.querySelector("[name=title]").textContent = timer.title;
+        TimerCard.#dom.querySelector(".title").textContent = timer.title;
         TimerCard.#timer = timer;
     }
 
     static showMessage(message) {
         TimerCard.#dom.querySelector(".countdown-display").classList.remove("fs-1");
-        TimerCard.#dom.querySelector("[name=message]").textContent = message;
+        TimerCard.#dom.querySelector(".timer-card > .message").textContent = message;
+        TimerCard.#dom.querySelector(".message-overlay > .message").textContent = message;
     }
 
     static hideMessage() {
-        TimerCard.#dom.querySelector("[name=message]").textContent = '';
         TimerCard.#dom.querySelector(".countdown-display").classList.add("fs-1");
-        TimerCard.stopMessageFlash();
-    }
-
-    static startMessageFlash() {
-        TimerCard.#messageFlashStatus = true;
-        const message = TimerCard.#dom.querySelector("[name=message]");
-        message.classList.add("flash");
-    }
-
-    static stopMessageFlash() {
-        TimerCard.#messageFlashStatus = false;
-        const message = TimerCard.#dom.querySelector("[name=message]");
-        message.classList.remove("flash");
+        TimerCard.#dom.querySelector(".message-overlay > .message").textContent = '';
+        TimerCard.#dom.querySelector(".timer-card > .message").classList.remove("flash");
+        TimerCard.#dom.querySelector(".timer-card > .message").textContent = '';
     }
 
     static toggleMessageFlash() {
-        if (TimerCard.#messageFlashStatus) {
-            TimerCard.stopMessageFlash();
-        } else {
-            TimerCard.startMessageFlash();
-        }
-    }
-
-    static showOnlyMessage() {
-        TimerCard.#dom.querySelector(".header").classList.add("d-none");
-        TimerCard.#dom.querySelector("[name=title]").classList.add("d-none");
-        TimerCard.#dom.querySelector(".countdown-display").classList.add("d-none");
-        TimerCard.#dom.querySelector(".progress").classList.add("d-none");
-    }
-
-    static showAllElements() {
-        TimerCard.#dom.querySelector(".header").classList.remove("d-none");
-        TimerCard.#dom.querySelector("[name=title]").classList.remove("d-none");
-        TimerCard.#dom.querySelector(".countdown-display").classList.remove("d-none");
-        TimerCard.#dom.querySelector(".progress").classList.remove("d-none");
-    }
-
-    static toggleMessageFocus() {
-        if (TimerCard.#messageFocusStatus) {
-            TimerCard.showAllElements();
-            TimerCard.#messageFocusStatus = false;
-        } else {
-            TimerCard.showOnlyMessage();
-            TimerCard.#messageFocusStatus = true;
-        }
+        TimerCard.#dom.querySelector(".timer-card > .message").classList.toggle("flash");
     }
 
     static toggleTimerFlash() {
-        const timerDisplay = TimerCard.#dom.querySelector(".countdown-display");
-        if (TimerCard.#timerFlashStatus) {
-            TimerCard.#timerFlashStatus = false;
-            timerDisplay.classList.remove("flash");
-        } else {
-            TimerCard.#timerFlashStatus = true;
-            timerDisplay.classList.add("flash");
-        }
+        TimerCard.#dom.querySelector(".countdown-display").classList.toggle("flash");
     }
 
-    static toggleBlackout() {
-        TimerCard.#dom.querySelector('.overlay').classList.toggle('d-none');
+    static toggleMessageOverlay() {
+        TimerCard.#dom.querySelector('.message-overlay').classList.toggle('d-none');
+    }
+
+    static toggleBlackoutOverlay() {
+        TimerCard.#dom.querySelector('.blackout-overlay').classList.toggle('d-none');
     }
 
     static _forEachSecond() {

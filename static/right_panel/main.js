@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const rightPanel = document.querySelector('.right-panel');
     rightPanel.querySelector('[name=flash]').onclick = TimerCard.toggleMessageFlash;
-    rightPanel.querySelector('[name=focus]').onclick = TimerCard.toggleMessageFocus;
+    rightPanel.querySelector('[name=focus]').onclick = TimerCard.toggleMessageOverlay;
 
     setEventHandlers(messagePallet);
 });
