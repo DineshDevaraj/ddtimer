@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const middlePanel = document.querySelector('.middle-panel');
     middlePanel.querySelector('[name=flash]').onclick = TimerCard.toggleTimerFlash;
+    middlePanel.querySelector('[name=blackout]').onclick = TimerCard.toggleBlackout;
 
     timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
     const addNewTimerButton = document.getElementById('add-new-timer');

@@ -89,6 +89,10 @@ class TimerCard {
         }
     }
 
+    static toggleBlackout() {
+        TimerCard.#dom.querySelector('.overlay').classList.toggle('d-none');
+    }
+
     static _forEachSecond() {
         const hours = Math.floor(TimerCard.#remainingSeconds / 3600);
         const minutes = Math.floor((TimerCard.#remainingSeconds % 3600) / 60);

@@ -148,3 +148,13 @@ body {
 html {
   scrollbar-width: none;
 }
+
+.timer-card {
+  position: relative;
+}
+.timer-card .overlay {
+  position: absolute;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  background-color: rgba(33, 37, 41, 1); /* semi-transparent black */
+  z-index: 10; /* above other content */
+}
