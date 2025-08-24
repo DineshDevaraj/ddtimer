@@ -24,26 +24,31 @@ function deleteMessage(event) {
         previousPalletShown = null;
         TimerCard.hideMessage();
     }
+    messagePallet.querySelector('textarea').removeAttribute('disabled');
     messagePallet.remove();
 }
 
 function showMessage(event) {
-    if (previousPalletShown && previousPalletShown !== event.target.closest('.message-pallet')) {
+    if (previousPalletShown) {
         previousPalletShown.querySelector('[name=show]').classList.remove('d-none');
         previousPalletShown.querySelector('[name=hide]').classList.add('d-none');
     }
     const messagePallet = event.target.closest('.message-pallet');
-    const message = messagePallet.querySelector('textarea').value;
     messagePallet.querySelector('[name=hide]').classList.remove('d-none');
     messagePallet.querySelector('[name=show]').classList.add('d-none');
     previousPalletShown = messagePallet
+
+    messagePallet.querySelector('textarea').setAttribute('disabled', 'disabled');
+    const message = messagePallet.querySelector('textarea').value;
     TimerCard.showMessage(message);
 }
 
 function hideMessage(event) {
     const messagePallet = event.target.closest('.message-pallet');
+    messagePallet.querySelector('textarea').removeAttribute('disabled');
     messagePallet.querySelector('[name=show]').classList.remove('d-none');
     messagePallet.querySelector('[name=hide]').classList.add('d-none');
+    previousPalletShown = null;
     TimerCard.hideMessage();
 }
 
