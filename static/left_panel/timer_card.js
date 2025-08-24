@@ -4,6 +4,7 @@ class TimerCard {
     static #timer = null;
     static #instance = null;
     static #runningStatus = false;
+    static #messageFocusStatus = false;
     static #messageFlashStatus = false;
     static #timerFlashStatus = false;
     static #remainingSeconds = 0;
@@ -51,6 +52,29 @@ class TimerCard {
             TimerCard.stopMessageFlash();
         } else {
             TimerCard.startMessageFlash();
+        }
+    }
+
+    static showOnlyMessage() {
+        TimerCard.#dom.querySelector(".countdown-display").classList.add("d-none");
+        TimerCard.#dom.querySelector("[name=header]").classList.add("d-none");
+        TimerCard.#dom.querySelector("[name=title]").classList.add("d-none");
+
+    }
+
+    static showAllElements() {
+        TimerCard.#dom.querySelector(".countdown-display").classList.remove("d-none");
+        TimerCard.#dom.querySelector("[name=header]").classList.remove("d-none");
+        TimerCard.#dom.querySelector("[name=title]").classList.remove("d-none");
+    }
+
+    static toggleMessageFocus() {
+        if (TimerCard.#messageFocusStatus) {
+            TimerCard.showAllElements();
+            TimerCard.#messageFocusStatus = false;
+        } else {
+            TimerCard.showOnlyMessage();
+            TimerCard.#messageFocusStatus = true;
         }
     }
 
