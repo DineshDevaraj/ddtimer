@@ -4,9 +4,12 @@ let previousPalletShown = null;
 
 function addNewMessage(event) {
     const message = MessagePallet.clone();
+
     message.dom.querySelector('textarea').value = '';
     message.dom.querySelector('[name=hide]').classList.add('d-none');
     message.dom.querySelector('[name=show]').classList.remove('d-none');
+    message.dom.querySelector('textarea').removeAttribute('disabled');
+
     const palletContainer = document.querySelector('.right-panel .pallet-container');
     palletContainer.appendChild(message.dom);
     setEventHandlers(message);
@@ -24,7 +27,6 @@ function deleteMessage(event) {
         previousPalletShown = null;
         TimerCard.hideMessage();
     }
-    messagePallet.querySelector('textarea').removeAttribute('disabled');
     messagePallet.remove();
 }
 
