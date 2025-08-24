@@ -9,9 +9,24 @@ function addNewTimer(event) {
     attachTimerDurationEditor(timer.dom);
     attachStartTimeEditor(timer.dom);
 
-    timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
-    const middlePanel = document.querySelector('.middle-panel .row');
-    middlePanel.appendChild(timer.dom);
+    document.querySelector('.middle-panel .row').appendChild(timer.dom);
+    timer.dom.querySelector('[name=Delete]').onclick = deleteTimer;
+    timer.dom.querySelector('[name=Resume]').onclick = resumeTimer;
+    timer.dom.querySelector('[name=Pause]').onclick = pauseTimer;
+}
+
+function pauseTimer(event) {
+    const timerDom = event.target.closest('.timer-pallet');
+    timerDom.querySelector('[name=Resume]').classList.remove('d-none');
+    timerDom.querySelector('[name=Pause]').classList.add('d-none');
+    TimerCard.pause();
+}
+
+function resumeTimer(event) {
+    const timerDom = event.target.closest('.timer-pallet');
+    timerDom.querySelector('[name=Pause]').classList.remove('d-none');
+    timerDom.querySelector('[name=Resume]').classList.add('d-none');
+    TimerCard.resume();
 }
 
 function deleteTimer(event) {
@@ -40,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
     middlePanel.querySelector('[name=flash]').onclick = flashTimer;
     middlePanel.querySelector('[name=blackout]').onclick = timerCardBlackout;
 
-    timer.dom.querySelector('[name=delete]').onclick = deleteTimer;
-    const addNewTimerButton = document.getElementById('add-new-timer');
-    addNewTimerButton.onclick = addNewTimer;
+    document.getElementById('add-new-timer').onclick = addNewTimer;
+    timer.dom.querySelector('[name=Delete]').onclick = deleteTimer;
+    timer.dom.querySelector('[name=Resume]').onclick = resumeTimer;
+    timer.dom.querySelector('[name=Pause]').onclick = pauseTimer;
 });
 
 function flashTimer(event) {
@@ -57,7 +73,7 @@ function flashTimer(event) {
 
 function timerCardBlackout(event) {
     const button = event.target.closest('button');
-    button.classList.toggle("border-danger");
     button.querySelector('i').classList.toggle("text-danger");
+    button.classList.toggle("border-danger");
     TimerCard.toggleBlackoutOverlay();
 }

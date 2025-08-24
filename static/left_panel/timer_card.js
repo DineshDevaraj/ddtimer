@@ -77,6 +77,13 @@ class TimerCard {
         TimerCard.#runningStatus = false;
     }
 
+    static resume() {
+        TimerCard.#runningStatus = true;
+        console.log(`Timer ${TimerCard.#timer.title} resumed.`);
+        TimerCard._intervalObject = setInterval(TimerCard._forEachSecond, 1000);
+        TimerCard._forEachSecond();
+    }
+
     static stop() {
         clearInterval(TimerCard._intervalObject);
         console.log(`Timer ${TimerCard.#timer.title} stopped.`);
