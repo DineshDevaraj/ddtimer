@@ -1,4 +1,6 @@
 
+let previousPalletShown = null;
+
 function addNewMessage(event) {
     const message = MessagePallet.clone();
     message.dom.querySelector('textarea').value = '';
@@ -20,10 +22,15 @@ function deleteMessage(event) {
 }
 
 function showMessage(event) {
+    if (previousPalletShown && previousPalletShown !== event.target.closest('.message-pallet')) {
+        previousPalletShown.querySelector('[name=show]').classList.remove('d-none');
+        previousPalletShown.querySelector('[name=hide]').classList.add('d-none');
+    }
     const messagePallet = event.target.closest('.message-pallet');
     const message = messagePallet.querySelector('textarea').value;
     messagePallet.querySelector('[name=hide]').classList.remove('d-none');
     messagePallet.querySelector('[name=show]').classList.add('d-none');
+    previousPalletShown = messagePallet
     TimerCard.showMessage(message);
 }
 
