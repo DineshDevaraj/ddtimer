@@ -1,4 +1,5 @@
 
+let flashStatus = false;
 let previousPalletShown = null;
 
 function addNewMessage(event) {
@@ -45,5 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const messagePallet = MessagePallet.getByMessageId("message-1");
     const addNewMessageButton = document.getElementById('add-new-message');
     addNewMessageButton.onclick = addNewMessage;
+
+    const rightPanel = document.querySelector('.right-panel');
+    rightPanel.querySelector('[name=flash]').onclick = TimerCard.toggleMessageFlash;
+
     setEventHandlers(messagePallet);
 });

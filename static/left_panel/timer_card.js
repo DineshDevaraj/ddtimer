@@ -1,61 +1,85 @@
 
 class TimerCard {
 
-    static _timer = null;
-    static _instance = null;
-    static _runningStatus = false;
-    static _remainingSeconds = 0;
+    static #timer = null;
+    static #instance = null;
+    static #runningStatus = false;
+    static #messageFlashStatus = false;
+    static #timerFlashStatus = false;
+    static #remainingSeconds = 0;
 
-    static _dom = document.querySelector('.timer-card');
+    static #dom = document.querySelector('.timer-card');
 
     constructor() {
-        if (TimerCard._instance)
-            return TimerCard._instance;
-        TimerCard._instance = this;
+        if (TimerCard.#instance)
+            return TimerCard.#instance;
+        TimerCard.#instance = this;
     }
 
     static inject(timer) {
-        if (TimerCard._runningStatus)
+        if (TimerCard.#runningStatus)
             TimerCard.stop();
-        TimerCard._dom.querySelector("[name=title]").textContent = timer.title;
-        TimerCard._timer = timer;
+        TimerCard.#dom.querySelector("[name=title]").textContent = timer.title;
+        TimerCard.#timer = timer;
     }
 
     static showMessage(message) {
-        TimerCard._dom.querySelector("[name=message]").textContent = message;
+        TimerCard.#dom.querySelector("[name=message]").textContent = message;
     }
 
     static hideMessage() {
-        TimerCard._dom.querySelector("[name=message]").textContent = '';
+        TimerCard.#dom.querySelector("[name=message]").textContent = '';
+    }
+
+    static toggleMessageFlash() {
+        const message = TimerCard.#dom.querySelector("[name=message]");
+        if (TimerCard.#messageFlashStatus) {
+            TimerCard.#messageFlashStatus = false;
+            message.classList.remove("flash");
+        } else {
+            TimerCard.#messageFlashStatus = true;
+            message.classList.add("flash");
+        }
+    }
+
+    static toggleTimerFlash() {
+        const timerDisplay = TimerCard.#dom.querySelector(".timer-display");
+        if (TimerCard.#timerFlashStatus) {
+            TimerCard.#timerFlashStatus = false;
+            timerDisplay.classList.remove("flash");
+        } else {
+            TimerCard.#timerFlashStatus = true;
+            timerDisplay.classList.add("flash");
+        }
     }
 
     static _forEachSecond() {
-        const hours = Math.floor(TimerCard._remainingSeconds / 3600);
-        const minutes = Math.floor((TimerCard._remainingSeconds % 3600) / 60);
-        const seconds = TimerCard._remainingSeconds % 60;
-        const countdownDisplay = TimerCard._dom.querySelector('.countdown-display');
+        const hours = Math.floor(TimerCard.#remainingSeconds / 3600);
+        const minutes = Math.floor((TimerCard.#remainingSeconds % 3600) / 60);
+        const seconds = TimerCard.#remainingSeconds % 60;
+        const countdownDisplay = TimerCard.#dom.querySelector('.countdown-display');
         countdownDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        if (TimerCard._remainingSeconds-- <= 0) TimerCard.stop();
+        if (TimerCard.#remainingSeconds-- <= 0) TimerCard.stop();
     }
 
     static start() {
-        TimerCard._runningStatus = true;
-        console.log(`Timer ${TimerCard._timer.title} started.`);
-        TimerCard._remainingSeconds = TimerCard._timer.durationInSeconds;
+        TimerCard.#runningStatus = true;
+        console.log(`Timer ${TimerCard.#timer.title} started.`);
+        TimerCard.#remainingSeconds = TimerCard.#timer.durationInSeconds;
         TimerCard._intervalObject = setInterval(TimerCard._forEachSecond, 1000);
         TimerCard._forEachSecond();
     }
 
     static pause() {
         clearInterval(TimerCard._intervalObject);
-        console.log(`Timer ${TimerCard._timer.title} paused.`);
-        TimerCard._runningStatus = false;
+        console.log(`Timer ${TimerCard.#timer.title} paused.`);
+        TimerCard.#runningStatus = false;
     }
 
     static stop() {
         clearInterval(TimerCard._intervalObject);
-        console.log(`Timer ${TimerCard._timer.title} stopped.`);
-        TimerCard._runningStatus = false;
-        TimerCard._remainingSeconds = 0;
+        console.log(`Timer ${TimerCard.#timer.title} stopped.`);
+        TimerCard.#runningStatus = false;
+        TimerCard.#remainingSeconds = 0;
     }
 }
