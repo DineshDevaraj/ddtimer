@@ -94,4 +94,12 @@ class TimerCard {
         TimerCard.#runningStatus = false;
         TimerCard.#remainingSeconds = 0;
     }
+
+    static reset() {
+        TimerCard.stop();
+        console.log(`Timer card is reset.`);
+        TimerCard.#dom.querySelector('.countdown-display').textContent = '00:00:00';
+        TimerCard.#dom.querySelector(".title").textContent = 'Title';
+    }
+
 }
