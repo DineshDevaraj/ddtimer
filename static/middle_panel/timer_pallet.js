@@ -119,6 +119,13 @@ class TimerPallet {
         return new Description(title, speaker, note);
     }
 
+    postStopCleanup() {
+        /* this will be called from timer-card */
+        this.dom.querySelector('[name=Start]').classList.remove('d-none');
+        this.dom.querySelector('[name=Resume]').classList.add('d-none');
+        this.dom.querySelector('[name=Pause]').classList.add('d-none');
+    }
+
     runThisTimer() {
         TimerCard.inject(this);
         TimerCard.start();

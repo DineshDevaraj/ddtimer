@@ -91,6 +91,7 @@ class TimerCard {
     static stop() {
         clearInterval(TimerCard._intervalObject);
         console.log(`Timer ${TimerCard.#timer.title} stopped.`);
+        TimerCard.#timer.postStopCleanup();
         TimerCard.#runningStatus = false;
         TimerCard.#remainingSeconds = 0;
     }
