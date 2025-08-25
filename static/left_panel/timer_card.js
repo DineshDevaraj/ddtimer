@@ -93,7 +93,7 @@ class TimerCard {
         TimerCard.#runningStatus = false;
         clearInterval(TimerCard._intervalObject);
         console.log(`Timer ${TimerCard.#timer.title} stopped.`);
-        TimerCard.#timer.postStopHandler();
+        TimerOrchestrator.postStopHandler(TimerCard.#timer);
     }
 
     static reset() {

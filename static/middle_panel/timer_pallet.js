@@ -119,14 +119,6 @@ class TimerPallet {
         return new Description(title, speaker, note);
     }
 
-    postStopHandler() {
-        /* this will be called from timer-card */
-        this.dom.querySelector('[name=Start]').classList.remove('d-none');
-        this.dom.querySelector('[name=Resume]').classList.add('d-none');
-        this.dom.querySelector('[name=Pause]').classList.add('d-none');
-        TimerOrchestrator.runNextTimer(this);
-    }
-
     runThisTimer() {
         TimerCard.inject(this);
         TimerCard.start();
