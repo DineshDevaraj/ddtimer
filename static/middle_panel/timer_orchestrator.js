@@ -4,13 +4,13 @@
  */
 class TimerOrchestrator {
 
-    static #ignorePostStopHandler = false;
+    static #runNextTimer = true;
 
     static runGivenTimer(timer) {
         if(TimerCard.timer) {
-            TimerOrchestrator.#ignorePostStopHandler = true;
+            TimerOrchestrator.#runNextTimer = false;
             TimerCard.stop();
-            TimerOrchestrator.#ignorePostStopHandler = false;
+            TimerOrchestrator.#runNextTimer = true;
             TimerCard.timer.dom.querySelector('[name=Start]').classList.remove('d-none');
             TimerCard.timer.dom.querySelector('[name=Resume]').classList.add('d-none');
             TimerCard.timer.dom.querySelector('[name=Pause]').classList.add('d-none');
@@ -24,14 +24,14 @@ class TimerOrchestrator {
         timer.dom.querySelector('[name=Pause]').classList.add('d-none');
         timer.dom.querySelector('[name=Resume]').classList.add('d-none');
         timer.dom.querySelector('[name=Start]').classList.remove('d-none');
-        
-        if (TimerOrchestrator.#ignorePostStopHandler) {
-            return; /* do nothing */
-        }
-        
+                
         if (!timer.dom.nextElementSibling) {
             console.log(`There are no more timers.`);
             return;
+        }
+
+        if (false === TimerOrchestrator.#runNextTimer) {
+            return; /* do nothing */
         }
 
         TimerOrchestrator.runNextTimer(timer);
