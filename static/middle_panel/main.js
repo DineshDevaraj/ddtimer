@@ -37,7 +37,8 @@ function resumeTimer(event) {
 
 function deleteTimer(event) {
     event.target.closest('.timer-pallet').remove();
-    TimerCard.reset();
+    if (TimerCard.timer && TimerCard.timer.dom === event.target.closest('.timer-pallet'))
+        TimerCard.reset();
 }
 
 function setTimerElementsValue(timer) {
