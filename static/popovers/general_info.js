@@ -42,16 +42,15 @@ function popoverShownHook() {
 
 function generalInfoOk(event) {
     closePopover(event);
-    resetCurrentTimerPalletButtons();
+    resetCurrentlyShownTimerPalletButtons();
     const popoverDom = event.target.closest('.popover');
     const timer = TimerPallet.getByTimerId(popoverDom.classList[1]);
     timer.dom.querySelector('[name=Pause]').classList.remove('d-none');
     timer.dom.querySelector('[name=Start]').classList.add('d-none');
-    TimerCard.inject(timer);
-    TimerCard.start();
+    TimerOrchestrator.runGivenTimer(timer);
 }
 
-function resetCurrentTimerPalletButtons() {
+function resetCurrentlyShownTimerPalletButtons() {
     if (TimerCard.timer) {
         TimerCard.timer.dom.querySelector('[name=Pause]').classList.add('d-none');
         TimerCard.timer.dom.querySelector('[name=Start]').classList.remove('d-none');
