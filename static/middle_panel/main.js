@@ -12,33 +12,13 @@ function addNewTimer(event) {
     document.querySelector('.middle-panel .row').appendChild(timer.dom);
 
     timer.dom.querySelector('[name=Start]').classList.remove('d-none');
-    timer.dom.querySelector('[name=Delete]').onclick = deleteTimer;
+    timer.dom.querySelector('[name=Delete]').onclick = timer.delete;
 
     timer.dom.querySelector('[name=Resume]').classList.add('d-none');
-    timer.dom.querySelector('[name=Resume]').onclick = resumeTimer;
+    timer.dom.querySelector('[name=Resume]').onclick = timer.resume;
 
     timer.dom.querySelector('[name=Pause]').classList.add('d-none');
-    timer.dom.querySelector('[name=Pause]').onclick = pauseTimer;
-}
-
-function pauseTimer(event) {
-    const timerDom = event.target.closest('.timer-pallet');
-    timerDom.querySelector('[name=Resume]').classList.remove('d-none');
-    timerDom.querySelector('[name=Pause]').classList.add('d-none');
-    TimerCard.pause();
-}
-
-function resumeTimer(event) {
-    const timerDom = event.target.closest('.timer-pallet');
-    timerDom.querySelector('[name=Pause]').classList.remove('d-none');
-    timerDom.querySelector('[name=Resume]').classList.add('d-none');
-    TimerCard.resume();
-}
-
-function deleteTimer(event) {
-    event.target.closest('.timer-pallet').remove();
-    if (TimerCard.timer && TimerCard.timer.dom === event.target.closest('.timer-pallet'))
-        TimerCard.reset();
+    timer.dom.querySelector('[name=Pause]').onclick = timer.pause;
 }
 
 function setTimerElementsValue(timer) {
@@ -64,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
     middlePanel.querySelector('[name=blackout]').onclick = timerCardBlackout;
 
     document.getElementById('add-new-timer').onclick = addNewTimer;
-    timer.dom.querySelector('[name=Delete]').onclick = deleteTimer;
-    timer.dom.querySelector('[name=Resume]').onclick = resumeTimer;
-    timer.dom.querySelector('[name=Pause]').onclick = pauseTimer;
+    timer.dom.querySelector('[name=Delete]').onclick = timer.delete;
+    timer.dom.querySelector('[name=Resume]').onclick = timer.resume;
+    timer.dom.querySelector('[name=Pause]').onclick = timer.pause;
 });
 
 function flashTimer(event) {
