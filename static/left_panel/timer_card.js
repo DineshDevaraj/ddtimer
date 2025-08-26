@@ -63,7 +63,8 @@ class TimerCard {
         const minutes = Math.floor((TimerCard.#remainingSeconds % 3600) / 60);
         const seconds = TimerCard.#remainingSeconds % 60;
         const countdownDisplay = TimerCard.#dom.querySelector('.countdown-display');
-        countdownDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        countdownDisplay.textContent = `${hours.toString().padStart(2, '0')}:` +
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         if (TimerCard.#remainingSeconds-- <= 0) TimerCard.stop();
     }
 
