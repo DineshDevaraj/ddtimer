@@ -8,7 +8,6 @@ router = APIRouter()
 
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
-app.include_router(router, prefix="/timer")
 
 
 @router.get("/")
@@ -17,3 +16,4 @@ def read_root():
 
 
 # uvicorn main:app --reload --host 0.0.0.0 --port 7070
+app.include_router(router, prefix="/timer")
