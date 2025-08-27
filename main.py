@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
@@ -11,8 +11,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @router.get("/")
-def read_root():
-    return templates.TemplateResponse("index.html", {"request": {}})
+def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 # uvicorn main:app --reload --host 0.0.0.0 --port 7070
