@@ -15,5 +15,5 @@ def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-# uvicorn main:app --reload --host 0.0.0.0 --port 7070
+# uvicorn main:app --reload --host 0.0.0.0 --port 7385
 app.include_router(router, prefix="/timer")
